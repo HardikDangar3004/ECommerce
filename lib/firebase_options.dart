@@ -1,17 +1,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
-    show defaultTargetPlatform, kIsWeb, TargetPlatform;
+    show defaultTargetPlatform, TargetPlatform;
 
-/// Default [FirebaseOptions] for use with your Firebase apps.
-///
-/// Example:
-/// ```dart
-/// import 'firebase_options.dart';
-/// // ...
-/// await Firebase.initializeApp(
-///   options: currentPlatform,
-/// );
-/// ```
 
 FirebaseOptions get currentPlatform {
   switch (defaultTargetPlatform) {
@@ -19,12 +9,6 @@ FirebaseOptions get currentPlatform {
       return android;
     case TargetPlatform.iOS:
       return ios;
-    case TargetPlatform.macOS:
-    case TargetPlatform.windows:
-    case TargetPlatform.linux:
-      throw UnsupportedError(
-        'Firebase options are not supported for this platform.',
-      );
     default:
       throw UnsupportedError(
         'Firebase options are not supported for this platform.',

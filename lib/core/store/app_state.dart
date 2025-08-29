@@ -1,4 +1,3 @@
-
 import 'package:equatable/equatable.dart';
 import '../../features/auth/store/auth_state.dart';
 import '../../features/cart/store/cart_state.dart';

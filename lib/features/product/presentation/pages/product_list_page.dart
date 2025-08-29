@@ -94,7 +94,7 @@ class _ProductListPageState extends State<ProductListPage> {
         _categories = categories;
       });
     } catch (e) {
-      debugPrint('Failed to load categories: $e');
+      // Handle category loading error
     }
   }
 
@@ -119,7 +119,8 @@ class _ProductListPageState extends State<ProductListPage> {
       if (mounted) {
         SnackbarUtils.showError(
           context,
-          message: 'Failed to load products: $e',
+          message:
+              '${AppStrings.failedToLoad} ${AppStrings.products.toLowerCase()}: $e',
         );
       }
     }
@@ -145,8 +146,6 @@ class _ProductListPageState extends State<ProductListPage> {
     _hasReachedMax = false;
     await _loadProducts();
   }
-
-
 
   void _onAddToCart(Product product) {
     final store = StoreProvider.of<AppState>(context, listen: false);
@@ -198,15 +197,12 @@ class _ProductListPageState extends State<ProductListPage> {
       ),
       body: Column(
         children: [
-
           // Products Grid
           Expanded(child: _buildProductsGrid()),
         ],
       ),
     );
   }
-
-
 
   Widget _buildProductsGrid() {
     if (_isLoading && _products.isEmpty) {
@@ -269,8 +265,7 @@ class _ProductListPageState extends State<ProductListPage> {
                 final product = _products[index];
                 return ProductCard(
                   product: product,
-                  onTap: () {
-                  },
+                  onTap: () {},
                   onAddToCart: () => _onAddToCart(product),
                   onToggleFavorite: () => _onToggleFavorite(product),
                   isInCart: false, // This will be handled by Redux state
@@ -290,7 +285,7 @@ class _ProductListPageState extends State<ProductListPage> {
               child: ElevatedButton(
                 onPressed: _isLoadingMore ? null : _loadMoreProducts,
                 style: ElevatedButton.styleFrom(
-                  padding:  EdgeInsets.symmetric(vertical: UISpacing.padding_16 ),
+                  padding: EdgeInsets.symmetric(vertical: UISpacing.padding_16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(UIRadius.radius_12),
                   ),
@@ -322,7 +317,7 @@ class _ProductListPageState extends State<ProductListPage> {
 
   Widget _buildSkeletonGrid() {
     return GridView.builder(
-      padding:  EdgeInsets.all(UISpacing.padding_16),
+      padding: EdgeInsets.all(UISpacing.padding_16),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: _getCrossAxisCount(),
         childAspectRatio: 0.75,

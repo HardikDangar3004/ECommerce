@@ -4,7 +4,7 @@ import 'package:redux/redux.dart';
 import 'package:redux_logging/redux_logging.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'core/constants/app_strings.dart';
 import 'core/store/app_state.dart';
 import 'core/store/app_reducer.dart';
 import 'core/di/service_locator.dart';
@@ -20,13 +20,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   try {
-    // Initialize Firebase
-    print('Initializing Firebase...');
     await Firebase.initializeApp(options: currentPlatform);
-    print('Firebase initialized successfully');
   } catch (e) {
-    print('Firebase initialization failed: $e');
-    // Continue with app initialization even if Firebase fails
+    debugPrint("e $e");
   }
 
   // Initialize service locator
@@ -37,9 +33,9 @@ void main() async {
     appReducer,
     initialState: AppState.initial(),
     middleware: [
-      LoggingMiddleware.printer(),
-      AuthMiddleware(),
-      PersistenceMiddleware(ServiceLocator.localStorageService),
+      LoggingMiddleware.printer().call,
+      AuthMiddleware().call,
+      PersistenceMiddleware(ServiceLocator.localStorageService).call,
     ],
   );
 
@@ -59,7 +55,7 @@ class MyApp extends StatelessWidget {
     return StoreProvider<AppState>(
       store: store,
       child: ScreenUtilInit(
-        designSize: const Size(375, 812), // iPhone X design size
+        designSize: const Size(375, 812),
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {
@@ -67,7 +63,8 @@ class MyApp extends StatelessWidget {
             converter: (store) => store.state.isDarkMode,
             builder: (context, isDarkMode) {
               return MaterialApp(
-                title: 'E-Commerce App',
+                debugShowCheckedModeBanner: false,
+                title: AppStrings.appName,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.darkTheme,
                 themeMode: ThemeMode.system,

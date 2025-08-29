@@ -1,3 +1,6 @@
+import 'package:ecommerce_demo/core/ui/ui_padding.dart';
+import 'package:ecommerce_demo/core/ui/ui_radius.dart';
+import 'package:ecommerce_demo/core/ui/ui_space.dart';
 import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 
@@ -8,7 +11,7 @@ class ProductSkeleton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(UIRadius.radius_12)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -17,7 +20,7 @@ class ProductSkeleton extends StatelessWidget {
             height: 120,
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.surface,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(UIRadius.radius_12),
             ),
             child: Icon(Icons.image, size: 48, color: AppColors.textHint),
           ),
@@ -25,7 +28,7 @@ class ProductSkeleton extends StatelessWidget {
           // Content skeleton
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: EdgeInsets.all(UISpacing.padding_12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -35,10 +38,10 @@ class ProductSkeleton extends StatelessWidget {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: AppColors.borderLight,
-                      borderRadius: BorderRadius.circular(4),
+                      borderRadius: BorderRadius.circular(UIRadius.radius_4),
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  sizedBoxH8,
 
                   // Brand skeleton
                   Container(
@@ -46,10 +49,10 @@ class ProductSkeleton extends StatelessWidget {
                     width: 80,
                     decoration: BoxDecoration(
                       color: AppColors.borderLight,
-                      borderRadius: BorderRadius.circular(4),
+                      borderRadius: BorderRadius.circular(UIRadius.radius_4),
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  sizedBoxH8,
 
                   // Rating skeleton
                   Row(
@@ -59,21 +62,21 @@ class ProductSkeleton extends StatelessWidget {
                         width: 60,
                         decoration: BoxDecoration(
                           color: AppColors.borderLight,
-                          borderRadius: BorderRadius.circular(4),
+                          borderRadius: BorderRadius.circular(UIRadius.radius_4),
                         ),
                       ),
-                      const SizedBox(width: 8),
+                      sizedBoxW8,
                       Container(
                         height: 12,
                         width: 40,
                         decoration: BoxDecoration(
                           color: AppColors.borderLight,
-                          borderRadius: BorderRadius.circular(4),
+                          borderRadius: BorderRadius.circular(UIRadius.radius_4),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8),
+                  sizedBoxH8,
 
                   // Price skeleton
                   Container(
@@ -81,10 +84,10 @@ class ProductSkeleton extends StatelessWidget {
                     width: 50,
                     decoration: BoxDecoration(
                       color: AppColors.borderLight,
-                      borderRadius: BorderRadius.circular(4),
+                      borderRadius: BorderRadius.circular(UIRadius.radius_4),
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  sizedBoxH8,
 
                   // Button skeleton
                   Container(
@@ -92,7 +95,7 @@ class ProductSkeleton extends StatelessWidget {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: AppColors.borderLight,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(UIRadius.radius_8),
                     ),
                   ),
                 ],

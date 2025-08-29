@@ -1,3 +1,4 @@
+import 'package:ecommerce_demo/core/ui/ui_radius.dart';
 import 'package:flutter/material.dart';
 import '../constants/app_strings.dart';
 import '../utils/validation_utils.dart';
@@ -99,7 +100,7 @@ class CustomTextField extends StatelessWidget {
         border:
             border ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.0),
+              borderRadius: BorderRadius.circular(UIRadius.radius_12),
               borderSide: BorderSide(
                 color: hasError
                     ? Theme.of(context).colorScheme.error
@@ -108,7 +109,7 @@ class CustomTextField extends StatelessWidget {
               ),
             ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.0),
+          borderRadius: BorderRadius.circular(UIRadius.radius_12),
           borderSide: BorderSide(
             color: hasError
                 ? Theme.of(context).colorScheme.error
@@ -119,7 +120,7 @@ class CustomTextField extends StatelessWidget {
         focusedBorder:
             focusedBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.0),
+              borderRadius: BorderRadius.circular(UIRadius.radius_12),
               borderSide: BorderSide(
                 color: hasError
                     ? Theme.of(context).colorScheme.error
@@ -130,7 +131,7 @@ class CustomTextField extends StatelessWidget {
         errorBorder:
             errorBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.0),
+              borderRadius: BorderRadius.circular(UIRadius.radius_12),
               borderSide: BorderSide(
                 color: Theme.of(context).colorScheme.error,
                 width: 2.5,
@@ -139,7 +140,7 @@ class CustomTextField extends StatelessWidget {
         focusedErrorBorder:
             focusedErrorBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.0),
+              borderRadius: BorderRadius.circular(UIRadius.radius_12),
               borderSide: BorderSide(
                 color: Theme.of(context).colorScheme.error,
                 width: 2.5,
@@ -224,8 +225,8 @@ class CustomPasswordField extends StatefulWidget {
   const CustomPasswordField({
     super.key,
     required this.controller,
-    this.labelText = 'Password',
-    this.hintText = 'Enter your password',
+    this.labelText = AppStrings.password,
+    this.hintText = AppStrings.enterPassword,
     this.validator,
     this.errorText,
     this.showErrorBorder = false,
@@ -312,8 +313,8 @@ class _CustomConfirmPasswordFieldState
   Widget build(BuildContext context) {
     return CustomTextField(
       controller: widget.controller,
-      labelText: 'Confirm Password',
-      hintText: 'Confirm your password',
+      labelText: AppStrings.confirmPassword,
+      hintText: AppStrings.confirmYourPassword,
       prefixIcon: Icons.lock,
       suffixIcon: isPasswordVisible ? Icons.visibility : Icons.visibility_off,
       onSuffixIconPressed: () {

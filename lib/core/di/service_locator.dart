@@ -15,9 +15,8 @@ class ServiceLocator {
       // Initialize services
       _firebaseAuthService = FirebaseAuthService();
       _localStorageService = LocalStorageService();
-      print('ServiceLocator initialized successfully');
     } catch (e) {
-      print('ServiceLocator initialization failed: $e');
+      // Handle initialization error
     }
   }
 

@@ -1,3 +1,5 @@
+import 'package:ecommerce_demo/core/ui/ui_padding.dart';
+import 'package:ecommerce_demo/core/ui/ui_space.dart';
 import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 import '../constants/app_strings.dart';
@@ -18,7 +20,7 @@ class CustomErrorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(24.0),
+        padding:  EdgeInsets.all(UISpacing.padding_24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -27,7 +29,7 @@ class CustomErrorWidget extends StatelessWidget {
               size: 64,
               color: AppColors.gray400,
             ),
-            const SizedBox(height: 16),
+            sizedBoxH16,
             Text(
               message,
               style: Theme.of(
@@ -36,15 +38,15 @@ class CustomErrorWidget extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             if (onRetry != null) ...[
-              const SizedBox(height: 24),
+              sizedBoxH24,
               ElevatedButton.icon(
                 onPressed: onRetry,
                 icon: const Icon(Icons.refresh),
                 label: const Text(AppStrings.tryAgain),
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 12,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: UISpacing.padding_24,
+                    vertical: UISpacing.padding_12,
                   ),
                 ),
               ),

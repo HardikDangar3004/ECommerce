@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:redux/redux.dart';
-
 import '../store/app_state.dart';
-import '../store/app_reducer.dart';
 import '../di/service_locator.dart';
 import '../routes/app_router.dart';
 import '../../features/auth/store/auth_actions.dart';
@@ -41,22 +38,18 @@ class _AuthWrapperState extends State<AuthWrapper> {
 
         final user = snapshot.data;
 
-        // Dispatch auth state change to Redux store
         WidgetsBinding.instance.addPostFrameCallback((_) {
           final store = StoreProvider.of<AppState>(context, listen: false);
           store.dispatch(AuthStateChanged(user));
         });
 
-        // Navigate based on authentication state (only once)
         if (!_hasNavigated) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             if (user != null) {
-              // User is authenticated, navigate to products page
               if (ModalRoute.of(context)?.settings.name != AppRouter.products) {
                 Navigator.of(context).pushReplacementNamed(AppRouter.products);
               }
             } else {
-              // User is not authenticated, navigate to login page
               if (ModalRoute.of(context)?.settings.name != AppRouter.login) {
                 Navigator.of(context).pushReplacementNamed(AppRouter.login);
               }

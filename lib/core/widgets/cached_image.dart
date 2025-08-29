@@ -1,3 +1,5 @@
+import 'package:ecommerce_demo/core/ui/ui_radius.dart';
+import 'package:ecommerce_demo/core/ui/ui_space.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../constants/app_colors.dart';
@@ -37,20 +39,20 @@ class CachedImageWidget extends StatelessWidget {
       placeholder: (context, url) => Container(
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surface,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(UIRadius.radius_8),
         ),
         child: Icon(Icons.image, size: 48, color: AppColors.gray400),
       ),
       errorWidget: (context, url, error) => Container(
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.errorContainer,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(UIRadius.radius_8),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.broken_image, size: 32, color: AppColors.gray400),
-            const SizedBox(height: 4),
+            sizedBoxH4,
             Text(
               AppStrings.failedToLoad,
               style: TextStyle(color: AppColors.textHint, fontSize: 12),
@@ -85,5 +87,4 @@ class CachedImageWidget extends StatelessWidget {
     );
   }
 
-  // Removed unused _buildErrorWidget
 }
